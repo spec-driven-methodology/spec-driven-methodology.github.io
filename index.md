@@ -1,57 +1,58 @@
 ---
 layout: home
+lang: en
 ---
 
-## Что
+## What
 
-**SDM (Spec-Driven Methodology)** — методология обращения с методическими артефактами как со спецификациями: пишутся один раз, проверяются машинно, а всё производное генерируется.
+**SDM (Spec-Driven Methodology)** is a methodology for treating methodological artifacts as specifications: written once, verified by machine, with all derived output generated automatically.
 
 > **Ontology → Profile → Coverage → Export**
 
-## Жизненный цикл (артефакты, не команды)
+## Lifecycle (artifacts, not commands)
 
-- **Ontology** — граф узлов (любой тип: навыки, темы, концепты) и их связей
-- **Profile** — что отбираем из онтологии и до какого порога
-- **Coverage** — чего не хватает: множество gap-узлов по фиксированному определению
-- **Export** — куда отдаём результат (MCP, Obsidian, веб, CLI, документы)
+- **Ontology** — a graph of nodes (any type: skills, topics, concepts, talks) and their relationships
+- **Profile** — what is selected from the ontology and to what threshold
+- **Coverage** — what is missing: a set of gap nodes by a fixed definition
+- **Export** — where the result goes (MCP, Obsidian, web, CLI, documents)
 
-Кто выполняет шаги (человек или агент) — не важно; цепочка артефактов одна.
+Who performs the steps (human or agent) does not matter — the artifact chain is the same.
 
-## Онтология и узлы
+## Ontology and nodes
 
-Онтология — единый граф: `ontology/`, узлы с полем `kind` (skill, topic, concept, talk…). Набор kind открыт, методология его не фиксирует. Один граф может смешивать kind. Кто хочет разделить области — создаёт отдельный SDM-проект.
+Ontology is a single graph: `ontology/`, nodes with a `kind` field (skill, topic, concept, talk…). The set of kinds is open — the methodology does not fix it. A single graph may mix kinds. To separate domains, create a separate SDM project.
 
-## Три слоя
+## Three layers
 
-| Слой | Что | Как меняется |
-|------|-----|-------------|
-| **Specification** | Онтология (узлы+kind) + профиль + определение gap | Редко |
-| **Computation** | Расчёт coverage по фиксированной мере | Итеративно |
-| **Presentation** | Экспорт (MCP/Obsidian/веб/CLI) | Полностью открыт |
+| Layer | What | How it changes |
+|-------|------|----------------|
+| **Specification** | Ontology (nodes+kinds) + profile + gap definition | Rarely |
+| **Computation** | Coverage calculation by a fixed measure | Iteratively |
+| **Presentation** | Export (MCP/Obsidian/web/CLI) | Fully open |
 
-## Инварианты
+## Invariants
 
-1. При одинаковых ontology и profile множество gap-узлов совпадает у любых реализаций. Определение gap фиксировано методологией, реализации его не выбирают.
+1. Given the same ontology and profile, the set of gap nodes is identical across all implementations. The gap definition is fixed by the methodology — implementations do not choose it.
 
-## Чем не является
+## What it is not
 
-- Не SDD (это про код)
-- Не инструмент/продукт — CLI, MCP, плагины — реализации, не методология
-- Не формат хранения (YAML не обязателен)
-- Не LMS, не платформа тестирования
-- Не judge/судья — проверки качества контента вне методологии
-- Не про вопросы конкретно — элементы профиля любые
+- Not SDD (that is about code)
+- Not a tool/product — CLI, MCP, plugins are implementations, not the methodology
+- Not a storage format (YAML is not required)
+- Not an LMS or testing platform
+- Not a judge — content quality checks are outside the methodology
+- Not specifically about questions — profile elements can be anything
 
-## Кому
+## Who is it for
 
-Методисты, преподаватели, учителя, блогеры, организаторы конференций — любой, кто работает с методическими артефактами и хочет проверять их на полноту.
+Methodologists, educators, teachers, bloggers, conference organizers — anyone who works with methodological artifacts and wants to verify their completeness.
 
 ---
 
-### Репозитории
+### Repositories
 
-| Репозиторий | Назначение |
+| Repository | Purpose |
 |---|---|
-| [`methodology`](https://github.com/spec-driven-methodology/methodology) | Концепт методологии, ADR, спецификация |
-| [`sdm`](https://github.com/spec-driven-methodology/sdm) | Реализация: CLI, MCP-сервер, npm `@spec-driven-methodology/sdm` |
-| [`obsidian-sdm`](https://github.com/spec-driven-methodology/obsidian-sdm) | Плагин для Obsidian |
+| [`methodology`](https://github.com/spec-driven-methodology/methodology) | Methodology concept, ADRs, specification |
+| [`sdm`](https://github.com/spec-driven-methodology/sdm) | Reference implementation: CLI, MCP server, npm `@spec-driven-methodology/sdm` |
+| [`obsidian-sdm`](https://github.com/spec-driven-methodology/obsidian-sdm) | Obsidian plugin |
