@@ -1,0 +1,7 @@
+# Spec-Driven Methodology — site
+title: SDM — Spec-Driven Methodology
+description: Методология обращения с методическими артефактами как со спецификациями
+baseurl: ""
+url: "https://spec-driven-methodology.github.io"
+markdown: kramdown
+theme: minima
