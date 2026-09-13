@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palette 11 — Lime (Agentic Roadmap)</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  :root{
+    --bg:#080c08;
+    --surface:#0f140f;
+    --surface-2:#151c15;
+    --border:#222b21;
+    --text:#e4ece2;
+    --text-dim:#a8b8a6;
+    --keyword:#c7f54a;
+    --string:#6ecf6e;
+    --number:#5ab4ff;
+    --accent2:#ff7849;
+    --comment:#667a66;
+    --green:#6ecf6e;
+    --amber:#ffb84a;
+    --purple:#b48aff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--keyword);text-decoration:none}
+  a:hover{color:#e4ece2;text-decoration:underline}
+
+  .topbar{
+    display:flex;align-items:center;gap:8px;
+    padding:14px 40px;
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;background:rgba(8,12,8,.92);backdrop-filter:blur(12px);
+    z-index:5;
+  }
+  .logo{font-weight:700;font-size:16px;letter-spacing:.2px;color:var(--text)}
+  .logo span{color:var(--keyword)}
+  .nav{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--text-dim)}
+  .nav a{color:var(--text-dim)}
+  .nav a:hover{color:var(--keyword)}
+  .nav .pill{
+    border:1px solid var(--border);border-radius:6px;padding:2px 12px;
+    font-size:12px;color:var(--keyword);
+  }
+
+  .hero{
+    padding:110px 40px 130px;
+    max-width:1100px;margin:0 auto;
+    text-align:center;
+    position:relative;
+  }
+  .hero::before{
+    content:"";position:absolute;
+    width:520px;height:520px;top:-180px;left:50%;transform:translateX(-50%);
+    background:radial-gradient(ellipse,rgba(199,245,74,.14) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--number);margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:60px;line-height:1.08;font-weight:700;letter-spacing:-.025em;
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:normal;color:transparent;
+    background:linear-gradient(90deg,var(--keyword) 0%,var(--accent2) 55%,var(--number) 115%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  .hero p{
+    font-size:16px;color:var(--text-dim);
+    max-width:680px;margin:0 auto 40px;
+  }
+  .cta{display:flex;gap:14px;justify-content:center}
+  .btn{
+    border-radius:8px;padding:12px 26px;font-size:14px;font-weight:600;
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .btn-primary{background:var(--keyword);color:#080c08}
+  .btn-primary:hover{background:#d4f762;transform:translateY(-1px);box-shadow:0 8px 24px rgba(199,245,74,.35);text-decoration:none}
+  .btn-ghost{border:1px solid var(--border);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--keyword);color:var(--keyword);transform:translateY(-1px);text-decoration:none}
+
+  .bands{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;max-width:1200px;margin:-84px auto 40px;padding:0 40px}
+  .band{height:52px;border-radius:8px}
+  .b1{background:var(--bg);border:1px solid var(--border)}
+  .b2{background:var(--surface)}
+  .b3{background:var(--surface-2)}
+  .b4{background:var(--keyword)}
+  .b5{background:var(--accent2)}
+  .b6{background:var(--number)}
+  .b7{background:var(--string)}
+
+  .section{max-width:1100px;margin:0 auto;padding:72px 40px}
+  .section h2{font-size:32px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .section .sub{color:var(--text-dim);max-width:640px;margin-bottom:40px;font-size:14px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;padding:26px;
+    transition:border-color .15s ease;
+  }
+  .card:hover{border-color:var(--keyword);}
+  .card .n{font-size:12px;color:var(--keyword);font-weight:600;margin-bottom:12px;display:block;letter-spacing:.04em}
+  .card h3{font-size:17px;font-weight:600;margin-bottom:8px;color:var(--text)}
+  .card p{color:var(--text-dim);font-size:13px}
+
+  .split{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+  .code{
+    background:var(--bg);border:1px solid var(--border);border-radius:10px;
+    padding:26px;font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:13px;line-height:1.7;color:var(--text);
+  }
+  .code .tok{color:var(--keyword);font-weight:600}
+  .code .tok2{color:var(--string)}
+  .code .num{color:var(--number)}
+  .code .comment{color:var(--comment)}
+  .checklist{list-style:none}
+  .checklist li{padding:16px 0;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start}
+  .checklist li:last-child{border-bottom:none}
+  .check{
+    flex:none;width:20px;height:20px;border-radius:6px;margin-top:2px;
+    background:rgba(110,207,110,.2);color:var(--string);
+    display:flex;align-items:center;justify-content:center;font-size:12px;
+  }
+  .checklist b{display:block;font-size:15px;margin-bottom:2px}
+  .checklist span{color:var(--text-dim);font-size:13px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{position:relative;padding-top:38px}
+  .step::before{
+    content:attr(data-n);
+    position:absolute;top:0;left:0;
+    font-size:13px;font-weight:600;color:#080c08;
+    background:var(--keyword);border-radius:6px;padding:5px 10px;
+  }
+  .step h3{font-size:16px;font-weight:600;margin-bottom:6px}
+  .step p{color:var(--text-dim);font-size:13px}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:36px 40px;text-align:center;color:var(--text-dim);font-size:13px;
+  }
+
+  @media (max-width:900px){
+    .hero h1{font-size:40px}
+    .grid3,.split,.steps{grid-template-columns:1fr}
+    .bands{grid-template-columns:repeat(6,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">Spec-Driven Methodology</div>
+  <nav class="nav">
+    <a href="#what">What</a>
+    <a href="#layers">Layers</a>
+    <a href="#flow">Flow</a>
+    <a href="#" class="pill">v0.9</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="kicker">Methodology · as code</div>
+  <h1>Methodological artifacts<br>as <em>specifications</em>.</h1>
+  <p>SDM treats methodology as specs: written once, verified by machine, with every derived output generated automatically.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="#layers">Explore the layers</a>
+    <a class="btn btn-ghost" href="#flow">How it works</a>
+  </div>
+</header>
+
+<div class="bands" aria-hidden="true">
+  <div class="band b1"></div><div class="band b2"></div><div class="band b3"></div>
+  <div class="band b4"></div><div class="band b5"></div><div class="band b6"></div>
+  <div class="band b7"></div><div class="band b2"></div><div class="band b3"></div>
+  <div class="band b1"></div><div class="band b5"></div><div class="band b4"></div>
+</div>
+
+<section class="section" id="what">
+  <h2>What is SDM?</h2>
+  <p class="sub">A single, machine-verifiable chain of methodological artifacts — independent of who performs the steps: a human or an agent.</p>
+  <div class="grid3">
+    <div class="card"><span class="n">ONTOLOGY</span><h3>One graph</h3><p>Nodes of any kind — skills, topics, concepts, talks — and their relationships in a single graph.</p></div>
+    <div class="card"><span class="n">PROFILE</span><h3>Selection &amp; threshold</h3><p>What is selected from the ontology and to what threshold. The profile defines the target.</p></div>
+    <div class="card"><span class="n">COVERAGE</span><h3>Fixed gap definition</h3><p>What is missing, computed by a fixed measure. Identical across all implementations.</p></div>
+  </div>
+</section>
+
+<section class="section" id="layers">
+  <div class="split">
+    <div class="code">
+      <span class="comment"># spec.yaml — written once</span><br>
+      <span class="tok">ontology</span>: <span class="tok2">./ontology</span><br>
+      <span class="tok">profile</span>:  <span class="tok2">junior-backend</span><br>
+      <span class="tok">coverage</span>: <span class="tok2">fixed-measure</span><br>
+      <br>
+      <span class="comment"># everything below is generated</span><br>
+      <span class="tok">export</span>:<br>
+      &nbsp;&nbsp;<span class="tok2">web</span>      <span class="comment"># player</span><br>
+      &nbsp;&nbsp;<span class="tok2">obsidian</span><br>
+      &nbsp;&nbsp;<span class="tok2">cli</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="check">✓</span><div><b>Specification</b><span>Ontology + profile + gap definition. Changes rarely.</span></div></li>
+      <li><span class="check">✓</span><div><b>Computation</b><span>Coverage by a fixed measure. Iterates.</span></div></li>
+      <li><span class="check">✓</span><div><b>Presentation</b><span>Export anywhere: MCP, Obsidian, web, CLI, documents. Fully open.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <h2>Lifecycle</h2>
+  <p class="sub">Artifacts, not commands — the same chain, whoever runs it.</p>
+  <div class="steps">
+    <div class="step" data-n="01"><h3>Ontology</h3><p>A graph of nodes and relationships, any kinds.</p></div>
+    <div class="step" data-n="02"><h3>Profile</h3><p>Selection from the ontology with a threshold.</p></div>
+    <div class="step" data-n="03"><h3>Coverage</h3><p>Gap nodes by a fixed definition.</p></div>
+    <div class="step" data-n="04"><h3>Export</h3><p>The result goes to MCP, Obsidian, web, CLI.</p></div>
+  </div>
+</section>
+
+<footer>
+  SDM — Spec-Driven Methodology · spec-driven-methodology.github.io
+</footer>
+
+</body>
+</html>

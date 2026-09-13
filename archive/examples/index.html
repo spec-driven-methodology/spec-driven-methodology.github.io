@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDM — Примеры артефактов</title>
+<style>
+  :root {
+    --bg: #0d0f14; --surface: #151924; --surface-2: #1c2230;
+    --border: #262e40; --text: #eef1f7; --text-dim: #9aa4b8;
+    --brand: #5b8cff; --brand-2: #8a6cff; --accent: #ffc44d;
+    --success: #37d6a2; --warn: #f0a030; --up: #37d6a2; --down: #e85a5a;
+    --line: #262e40;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--text);
+    font: 16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; gap:2rem;
+    padding:0 2rem; height:56px;
+    background:rgba(13,15,20,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo{font-weight:750;font-size:1.15rem;letter-spacing:-.02em}
+  .logo span{color:var(--brand)}
+  .nav{display:flex;gap:1.25rem;font-size:.875rem;color:var(--text-dim)}
+  .nav a{color:var(--text-dim);text-decoration:none;transition:color .15s}
+  .nav a:hover{color:var(--text)}
+  main{max-width:960px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+  header{padding:2rem 0 2.5rem}
+  header h1{font-size:2.5rem;font-weight:750;letter-spacing:-.02em;margin-bottom:.35rem}
+  header h1 span{color:var(--brand)}
+  header p{color:var(--text-dim);font-size:1rem;max-width:640px}
+  .kicker{
+    display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--brand);border:1px solid var(--brand);border-radius:100px;padding:2px 12px;margin-bottom:12px;
+  }
+
+  section{margin:2.5rem 0 3rem}
+  h2{font-size:1.35rem;font-weight:650;margin-bottom:.5rem;display:flex;align-items:center;gap:8px}
+  h2 .count{font-size:.8rem;color:var(--text-dim);font-weight:400}
+  .sub{color:var(--text-dim);font-size:.9rem;margin-bottom:1.25rem}
+  .tag{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:.7rem;font-weight:600;border-radius:6px;padding:2px 8px;margin:0 4px 4px 0;
+    background:var(--surface-2);color:var(--brand);
+  }
+  .tag.green{color:var(--success)}
+  .tag.gold{color:var(--accent)}
+  .tag.purple{color:var(--brand-2)}
+
+  .card{
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    overflow:hidden;margin-bottom:1rem;
+  }
+  .card-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.75rem 1rem;border-bottom:1px solid var(--border);
+    font-size:.875rem;font-weight:600;
+  }
+  .card-head .path{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.75rem;color:var(--text-dim);font-weight:400}
+  .card-body{padding:.75rem 1rem 1rem}
+
+  .code-block{
+    background:var(--surface-2);border-radius:8px;padding:1rem;margin:.5rem 0;
+    font: .82rem/1.5 ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    overflow-x:auto;white-space:pre;tab-size:2;
+  }
+  .code-block .key{color:var(--brand)}
+  .code-block .str{color:var(--success)}
+  .code-block .num{color:var(--accent)}
+  .code-block .cmt{color:var(--text-dim);font-style:italic}
+  .code-block .punc{color:var(--text-dim)}
+  .code-block .tag-kw{color:var(--brand-2)}
+  .code-block .meta{color:var(--text-dim);font-size:.75rem}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+  .coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .cov-item{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;
+  }
+  .cov-item .name{font-weight:600;font-size:.875rem}
+  .cov-item .meta{font-size:.75rem;color:var(--text-dim)}
+  .cov-bar-wrap{display:flex;align-items:center;gap:10px;flex:1;max-width:180px;margin-left:1rem}
+  .cov-bar-bg{flex:1;height:6px;background:var(--surface-2);border-radius:3px;overflow:hidden}
+  .cov-bar-fill{height:100%;border-radius:3px;transition:width .3s}
+  .cov-bar-fill.ok{background:var(--success)}
+  .cov-bar-fill.thin{background:var(--warn)}
+  .cov-bar-fill.miss{background:var(--down)}
+  .cov-stat{font-size:.75rem;font-weight:600;white-space:nowrap;min-width:3ch;text-align:right}
+
+  .q-preview{padding:.5rem 0}
+  .q-preview:not(:last-child){border-bottom:1px solid var(--border);padding-bottom:.75rem;margin-bottom:.75rem}
+  .q-text{font-size:.875rem;margin-bottom:.35rem}
+  .q-opt{font-size:.8rem;color:var(--text-dim);padding:2px 0}
+  .q-opt.correct{color:var(--success)}
+  .q-opt .mark{display:inline-block;width:14px;text-align:center;margin-right:4px}
+  .q-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .rubric-table{width:100%;border-collapse:collapse;font-size:.8rem;margin:.35rem 0}
+  .rubric-table th,.rubric-table td{
+    padding:.3rem .5rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;
+  }
+  .rubric-table th{color:var(--text-dim);font-weight:600;width:60px}
+
+  .flow{margin:1.5rem 0;display:flex;align-items:center;gap:0;flex-wrap:wrap}
+  .flow-step{
+    display:flex;align-items:center;gap:8px;
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    padding:.5rem .75rem;font-size:.82rem;
+  }
+  .flow-step .n{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:22px;height:22px;border-radius:6px;
+    background:var(--brand);color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0;
+  }
+  .flow-arrow{color:var(--text-dim);font-size:1.1rem;padding:0 8px}
+
+  .split-layout{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+  @media(max-width:720px){
+    .grid-2,.split-layout,.coverage-grid{grid-template-columns:1fr}
+    main{padding:1rem 1rem 3rem}
+    header h1{font-size:1.8rem}
+  }
+
+  footer{color:var(--text-dim);font-size:.8rem;border-top:1px solid var(--border);margin-top:3rem;padding-top:1rem}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">SDM<span>.</span></div>
+  <div class="nav">
+    <a href="#ontology">Ontology</a>
+    <a href="#profile">Profile</a>
+    <a href="#questions">Questions</a>
+    <a href="#terms">Terms</a>
+    <a href="#export">Export</a>
+    <a href="#coverage">Coverage</a>
+  </div>
+</div>
+
+<main>
+  <header>
+    <div class="kicker">Spec-Driven Methodology</div>
+    <h1>SDM <span>в примерах</span></h1>
+    <p>Реальные артефакты из репозитория методологии: онтология навыков → вопросы → профили → покрытие → экспорт. Один скелет компетенций — единый источник правды.</p>
+  </header>
+
+  <!-- ONTOLOGY -->
+  <section id="ontology">
+    <h2>Онтология навыков <span class="count">— 6 навыков</span></h2>
+    <p class="sub">Граф компетенций <code>ontology/skills/*.yaml</code>. Каждый навык — id, название, описание, зависмости.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head">
+          <span>core-java.yaml</span>
+          <span class="path">ontology/skills/</span>
+        </div>
+        <div class="card-body">
+          <div class="code-block">id: <span class="key">core-java</span>
+name: <span class="str">Core Java</span>
+description: <span class="str">Фундаментальные основы языка Java: JVM,
+  типы данных, ООП, коллекции,
+  многопоточность, лямбды,
+  Stream API, обработка исключений,
+  аннотации и рефлексия.</span>
+depends_on: <span class="punc">[]</span>
+related_to: <span class="punc">[]</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span>architecture.yaml</span>
+          <span class="path">ontology/skills/</span>
+        </div>
+        <div class="card-body">
+          <div class="code-block">id: <span class="key">architecture</span>
+name: <span class="str">Architecture</span>
+description: <span class="str">Проектирование систем: микросервисы,
+  монолит, DDD, Clean/Hexagonal,
+  CQRS, Event-Driven, паттерны
+  интеграции, observability,
+  resilience, масштабируемость,
+  версионирование API.</span>
+depends_on: <span class="punc">[]</span>
+related_to: <span class="punc">[]</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span>spring-framework.yaml</span>
+          <span class="path">ontology/skills/</span>
+        </div>
+        <div class="card-body">
+          <div class="code-block">id: <span class="key">spring-framework</span>
+name: <span class="str">Spring Framework</span>
+description: <span class="str">Разработка на Spring: IoC/DI,
+  Spring Boot, Spring MVC, REST,
+  безопасность, транзакции,
+  работа с данными (JDBC, JPA),
+  тестирование и интеграция.</span>
+depends_on: <span class="punc">[]</span>
+related_to: <span class="punc">[]</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span>testing.yaml</span>
+          <span class="path">ontology/skills/</span>
+        </div>
+        <div class="card-body">
+          <div class="code-block">id: <span class="key">testing</span>
+name: <span class="str">Testing</span>
+description: <span class="str">JUnit 5, AssertJ, Mockito,
+  Testcontainers, интеграционные
+  и контрактные тесты, покрытие,
+  мутационное тестирование,
+  нагрузочные тесты (JMeter/Gatling).</span>
+depends_on: <span class="punc">[]</span>
+related_to: <span class="punc">[]</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem">
+      <span class="tag">databases</span>
+      <span class="tag">devops</span>
+      <span class="tag">spring-boot</span>
+      <span class="tag">spring-core</span>
+      <span class="tag">spring-data</span>
+      <span class="tag">spring-security</span>
+      <span class="tag">java-concurrency</span>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <h2>Профиль и уровень <span class="count">— Java Developer → Senior</span></h2>
+    <p class="sub">Профиль задаёт набор уровней сертификации. Уровень — требования (skill + depth + weight) и порог прохождения.</p>
+
+    <div class="split-layout">
+      <div class="card">
+        <div class="card-head">
+          <span>java-developer.yaml</span>
+          <span class="path">certifications/profiles/</span>
+        </div>
+        <div class="card-body">
+          <div class="code-block">profile: <span class="str">java-developer</span>
+title: <span class="str">Java Developer</span>
+levels:
+  - <span class="str">senior</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <span>senior.yaml</span>
+          <span class="path">certifications/levels/</span>
+        </div>
+        <div class="card-body">
+          <div class="code-block">level: <span class="key">senior</span>
+title: <span class="str">Senior</span>
+description: <span class="str">Сеньор Java-разработчик со
+  специализацией на Spring.
+  Глубокое понимание экосистемы,
+  проектирование высоконагруженных
+  систем, владение практиками
+  DevOps и обеспечение качества.</span>
+threshold: <span class="num">0.7</span>
+requirements:
+  - skill: <span class="key">core-java</span>
+    depth: <span class="num">0.9</span>
+    weight: <span class="num">0.3</span>
+  - skill: <span class="key">spring-framework</span>
+    depth: <span class="num">0.9</span>
+    weight: <span class="num">0.3</span>
+  - skill: <span class="key">databases</span>
+    depth: <span class="num">0.9</span>
+    weight: <span class="num">0.1</span>
+  - skill: <span class="key">testing</span>
+    depth: <span class="num">0.9</span>
+    weight: <span class="num">0.1</span>
+  - skill: <span class="key">architecture</span>
+    depth: <span class="num">0.9</span>
+    weight: <span class="num">0.1</span>
+  - skill: <span class="key">devops</span>
+    depth: <span class="num">0.9</span>
+    weight: <span class="num">0.1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step"><span class="n">1</span> Онтология навыков</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="n">2</span> Требования (skill·depth·weight)</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="n">3</span> Покрытие вопросами</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step"><span class="n">4</span> Экспорт теста / курса</div>
+    </div>
+  </section>
+
+  <!-- QUESTIONS -->
+  <section id="questions">
+    <h2>Вопросы <span class="count">— 26 вопросов, 3 типа</span></h2>
+    <p class="sub">Библиотека <code>library/questions/*.yaml</code> — привязаны к навыкам, имеют difficulty, тип и rubric для открытых.</p>
+
+    <div class="grid-2">
+      <div>
+        <h2 style="font-size:1rem;margin-bottom:.75rem">Single Choice <span class="tag">q-core-java-001.yaml</span></h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="code-block" style="margin:0 0 .5rem">id: <span class="key">q-core-java-001</span>
+skill: <span class="key">core-java</span>
+difficulty: <span class="num">0.3</span>
+type: <span class="str">single_choice</span></div>
+            <div class="q-preview">
+              <div class="q-text">Какой результат выполнения кода: <code>List&lt;String&gt; list = new ArrayList&lt;&gt;(); list.add("A"); list.add("B"); return list.stream().filter(s → s.startsWith("A")).count();</code>?</div>
+              <div class="q-opt"><span class="mark">○</span> 0</div>
+              <div class="q-opt correct"><span class="mark">●</span> 1 <span class="tag green">correct</span></div>
+              <div class="q-opt"><span class="mark">○</span> 2</div>
+              <div class="q-opt"><span class="mark">○</span> Ошибка компиляции</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="font-size:1rem;margin:.75rem 0">Multi Choice <span class="tag purple">q-core-java-002.yaml</span></h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="code-block" style="margin:0 0 .5rem">id: <span class="key">q-core-java-002</span>
+skill: <span class="key">core-java</span>
+difficulty: <span class="num">0.6</span>
+type: <span class="str">multi_choice</span></div>
+            <div class="q-preview">
+              <div class="q-text">Какие из перечисленных утверждений о ключевом слове <code>volatile</code> в Java верны?</div>
+              <div class="q-opt correct"><span class="mark">☑</span> Гарантирует видимость изменений между потоками <span class="tag green">correct</span></div>
+              <div class="q-opt"><span class="mark">☐</span> Устраняет необходимость в синхронизации для составных операций</div>
+              <div class="q-opt correct"><span class="mark">☑</span> Запрещает переупорядочивание операций чтения/записи <span class="tag green">correct</span></div>
+              <div class="q-opt"><span class="mark">☐</span> Обеспечивает атомарность операций инкремента</div>
+            </div>
+            <div style="font-size:.78rem;color:var(--text-dim);padding-top:.35rem;border-top:1px solid var(--border);margin-top:.5rem">
+              Explanation: volatile гарантирует видимость и порядок, но не атомарность и не заменяет синхронизацию для read-modify-write.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 style="font-size:1rem;margin-bottom:.75rem">Open Question <span class="tag gold">q-core-java-003.yaml</span></h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="code-block" style="margin:0 0 .5rem">id: <span class="key">q-core-java-003</span>
+skill: <span class="key">core-java</span>
+difficulty: <span class="num">0.9</span>
+type: <span class="str">open</span>
+evidence: <span class="str">knowledge</span>
+min_depth: <span class="num">0.5</span></div>
+            <div class="q-preview">
+              <div class="q-text">Объясните разницу между <code>volatile</code> и <code>synchronized</code> в Java и приведите пример, где volatile недостаточен.</div>
+              <div class="q-meta">
+                <span class="tag">expected: volatile → видимость+порядок, synchronized → взаимное исключение+видимость</span>
+              </div>
+              <table class="rubric-table">
+                <tr><th>3</th><td>Названы обе гарантии, объяснена атомарность, корректный пример (i++)</td></tr>
+                <tr><th>2</th><td>Верно названы гарантии, но пример неполный</td></tr>
+                <tr><th>1</th><td>Частично верно, существенные неточности</td></tr>
+                <tr><th>0</th><td>Неверно или отсутствует</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="font-size:1rem;margin:.75rem 0">Open + Rubric <span class="tag gold">q-architecture-004.yaml</span></h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="code-block" style="margin:0 0 .5rem">id: <span class="key">q-architecture-004</span>
+skill: <span class="key">architecture</span>
+difficulty: <span class="num">0.63</span>
+type: <span class="str">open</span>
+evidence: <span class="str">skill</span></div>
+            <div class="q-preview">
+              <div class="q-text">Объясните, как паттерн Use Case / Interactor изолирует доменную логику от инфраструктуры (БД, веб-фреймворк) и почему это упрощает юнит-тестирование без базы данных. Приведите пример кода на Java или псевдокоде.</div>
+              <div class="q-meta">
+                <span class="tag">expected: Use Case изолирует через границы (interfaces)</span>
+                <span class="tag">red flag: сводит к разделению на слои без Dependency Inversion</span>
+                <span class="tag">red flag: утверждает, что Spring Boot сам изолирует</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section id="terms">
+    <h2>Глоссарий <span class="count">— 10 терминов</span></h2>
+    <p class="sub">Библиотека терминов <code>library/terms/*.yaml</code> — привязаны к навыкам, используются в kit и course экспорте.</p>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-head"><span>acid.yaml</span><span class="path">library/terms/</span></div>
+        <div class="card-body">
+          <div class="code-block" style="margin:0">id: <span class="key">acid</span>
+term: <span class="str">ACID</span>
+kind: <span class="str">concept</span>
+skills:
+  - <span class="key">databases</span>
+definition: <span class="str">Atomicity, Consistency, Isolation,
+  Durability — набор свойств
+  транзакций, гарантирующий
+  надёжность операций в
+  реляционных БД.</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div class="card-head"><span>cicd.yaml</span><span class="path">library/terms/</span></div>
+          <div class="card-body">
+            <div class="code-block" style="margin:0">id: <span class="key">cicd</span>
+term: <span class="str">CI/CD</span>
+skills:
+  - <span class="key">devops</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem">
+          <span class="tag">di</span>
+          <span class="tag">ioc</span>
+          <span class="tag">generics</span>
+          <span class="tag">jvm</span>
+          <span class="tag">junit</span>
+          <span class="tag">cqrs</span>
+          <span class="tag">microservices</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPORT -->
+  <section id="export">
+    <h2>Экспорт теста <span class="count">— test-java-developer-senior.json</span></h2>
+    <p class="sub">Готовый тестовый пакет — 26 вопросов, 764 строки. Экспортируется для агентов и внешних систем.</p>
+    <div class="card">
+      <div class="card-head">
+        <span>test-java-developer-senior.json</span>
+        <span class="path">exports/</span>
+      </div>
+      <div class="card-body">
+        <div class="code-block" style="margin:0;max-height:340px;overflow-y:auto">{
+  <span class="key">schemaVersion</span>: <span class="str">"sdm.export.test/v1"</span>,
+  <span class="key">profile</span>: <span class="str">"java-developer"</span>,
+  <span class="key">level</span>: <span class="str">"senior"</span>,
+  <span class="key">title</span>: <span class="str">"Senior"</span>,
+  <span class="key">threshold</span>: <span class="num">0.7</span>,
+  <span class="key">requirements</span>: [
+    { <span class="key">skill</span>: <span class="str">"core-java"</span>, <span class="key">depth</span>: <span class="num">0.9</span>, <span class="key">weight</span>: <span class="num">0.3</span> },
+    { <span class="key">skill</span>: <span class="str">"spring-framework"</span>, <span class="key">depth</span>: <span class="num">0.9</span>, <span class="key">weight</span>: <span class="num">0.3</span> },
+    { <span class="key">skill</span>: <span class="str">"databases"</span>, <span class="key">depth</span>: <span class="num">0.9</span>, <span class="key">weight</span>: <span class="num">0.1</span> },
+    { <span class="key">skill</span>: <span class="str">"testing"</span>, <span class="key">depth</span>: <span class="num">0.9</span>, <span class="key">weight</span>: <span class="num">0.1</span> },
+    { <span class="key">skill</span>: <span class="str">"architecture"</span>, <span class="key">depth</span>: <span class="num">0.9</span>, <span class="key">weight</span>: <span class="num">0.1</span> },
+    { <span class="key">skill</span>: <span class="str">"devops"</span>, <span class="key">depth</span>: <span class="num">0.9</span>, <span class="key">weight</span>: <span class="num">0.1</span> }
+  ],
+  <span class="key">questions</span>: [
+    { <span class="key">id</span>: <span class="str">"q-architecture-001"</span>, <span class="key">skill</span>: <span class="str">"architecture"</span>, <span class="key">type</span>: <span class="str">"single_choice"</span>, <span class="cmt">/* … */</span> },
+    { <span class="cmt">/* … 25 more questions … */</span> }
+  ]
+}</div>
+        <div class="code-block" style="margin-top:.5rem;font-size:.75rem">Собрано <span class="num">26</span> вопросов · <span class="num">6</span> навыков · порог <span class="num">70</span>%</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem">
+      <span class="tag">export test --adaptive</span>
+      <span class="tag">export test --format csv</span>
+      <span class="tag">export test --shuffleOptions</span>
+      <span class="tag">export learning --format course</span>
+      <span class="tag">export learning --format cheatsheet</span>
+      <span class="tag">export matrix</span>
+      <span class="tag">export kit</span>
+      <span class="tag">export mermaid</span>
+    </div>
+  </section>
+
+  <!-- COVERAGE -->
+  <section id="coverage">
+    <h2>Покрытие <span class="count">— Java Developer · Senior</span></h2>
+    <p class="sub">Проверка: какие навыки закрыты вопросами, какие — «thin» (нужны вопросы выше порога difficulty). Выполняется через <code>sdm cert coverage</code>.</p>
+
+    <div class="coverage-grid">
+      <div class="cov-item">
+        <div>
+          <div class="name">Core Java</div>
+          <div class="meta">3 вопроса · depth 0.9</div>
+        </div>
+        <div class="cov-bar-wrap">
+          <div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div>
+          <div class="cov-stat" style="color:var(--success)">✅</div>
+        </div>
+      </div>
+      <div class="cov-item">
+        <div>
+          <div class="name">Spring Framework</div>
+          <div class="meta">5 вопросов · depth 0.9</div>
+        </div>
+        <div class="cov-bar-wrap">
+          <div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div>
+          <div class="cov-stat" style="color:var(--success)">✅</div>
+        </div>
+      </div>
+      <div class="cov-item">
+        <div>
+          <div class="name">Databases</div>
+          <div class="meta">4 вопроса · depth 0.9</div>
+        </div>
+        <div class="cov-bar-wrap">
+          <div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div>
+          <div class="cov-stat" style="color:var(--success)">✅</div>
+        </div>
+      </div>
+      <div class="cov-item">
+        <div>
+          <div class="name">Testing</div>
+          <div class="meta">5 вопросов · depth 0.9</div>
+        </div>
+        <div class="cov-bar-wrap">
+          <div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div>
+          <div class="cov-stat" style="color:var(--success)">✅</div>
+        </div>
+      </div>
+      <div class="cov-item">
+        <div>
+          <div class="name">Architecture</div>
+          <div class="meta">5 вопросов · depth 0.63 (need 0.9)</div>
+        </div>
+        <div class="cov-bar-wrap">
+          <div class="cov-bar-bg"><div class="cov-bar-fill thin" style="width:70%"></div></div>
+          <div class="cov-stat" style="color:var(--warn)">⚠️ thin</div>
+        </div>
+      </div>
+      <div class="cov-item">
+        <div>
+          <div class="name">DevOps</div>
+          <div class="meta">4 вопроса · depth 0.63 (need 0.9)</div>
+        </div>
+        <div class="cov-bar-wrap">
+          <div class="cov-bar-bg"><div class="cov-bar-fill thin" style="width:70%"></div></div>
+          <div class="cov-stat" style="color:var(--warn)">⚠️ thin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:1rem">
+      <div class="card-head"><span>Итог покрытия</span><span class="path">sdm cert coverage --json</span></div>
+      <div class="card-body">
+        <div class="code-block" style="margin:0;font-size:.78rem">{
+  <span class="key">status</span>: {
+    <span class="key">core-java</span>:       <span class="str">"✅ ok"</span>,
+    <span class="key">spring-framework</span>: <span class="str">"✅ ok"</span>,
+    <span class="key">databases</span>:        <span class="str">"✅ ok"</span>,
+    <span class="key">testing</span>:          <span class="str">"✅ ok"</span>,
+    <span class="key">architecture</span>:     <span class="str">"⚠️ thin — depth_ratio (0.7)"</span>,
+    <span class="key">devops</span>:           <span class="str">"⚠️ thin — depth_ratio (0.7)"</span>
+  },
+  <span class="key">hasMissing</span>: <span class="num">false</span>,
+  <span class="key">hasThin</span>: <span class="num">true</span>,
+  <span class="key">workItems</span>: [
+    <span class="str">"Добавить questions difficulty ≥0.63 для architecture"</span>,
+    <span class="str">"Добавить questions difficulty ≥0.63 для devops"</span>
+  ]
+}</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    SDM (Spec-Driven Methodology) · Артефакты из репозитория <code>sdm/</code> · Дата генерации: 13.09.2026
+  </footer>
+</main>
+</body>
+</html>

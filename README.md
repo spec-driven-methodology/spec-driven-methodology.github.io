@@ -1,19 +1,19 @@
 # spec-driven-methodology.github.io
 
-Organization site for the SDM methodology (Spec-Driven Methodology). Built with GitHub Pages (Jekyll) automatically on push to `main`.
+Organization site for the SDM methodology (Spec-Driven Methodology). GitHub Pages site (static HTML, no Jekyll — `.nojekyll`).
 
 ## Structure
 
-- `index.md` — main page (English), from the methodology's `ONE_PAGER.md`
-- `ru/index.md` — Russian version at `/ru/`
-- `_config.yml` — Jekyll configuration
-- `_includes/header.html` — header with `EN | RU` language switcher
+- `index.html` — main page (SDM theme: IntelliJ/Darcula palette, Agent Orb brand)
+- `sdm-theme/` — the SDM theme as a standalone copy
+- `archive/` — previous experiments (palettes, icons, examples, old Jekyll sources)
 
 ## Local development
 
+Serve the static files with any static server, e.g.:
+
 ```bash
-bundle install
-bundle exec jekyll serve
+python3 -m http.server 8000
 ```
 
 ## Related repositories

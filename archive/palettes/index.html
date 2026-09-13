@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDM — Palette previews</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#0d0f14;
+    color:#eef1f7;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:60px 40px;
+    max-width:960px;margin:0 auto;
+  }
+  h1{font-size:40px;font-weight:750;letter-spacing:-.02em;margin-bottom:8px}
+  h1 span{color:#5b8cff}
+  p{color:#9aa4b8;margin-bottom:44px;font-size:16px}
+  .grid{display:grid;grid-template-columns:1fr;gap:28px}
+  .card{
+    background:#151924;border:1px solid #262e40;border-radius:16px;
+    overflow:hidden;transition:border-color .15s ease;
+  }
+  .card:hover{border-color:#5b8cff}
+  .card iframe{width:100%;height:420px;border:none;display:block;border-bottom:1px solid #262e40}
+  .card .body{padding:22px 26px}
+  .card h2{font-size:20px;margin-bottom:4px}
+  .card .tag{display:inline-block;font-size:12px;font-weight:600;
+    background:#1c2230;color:#5b8cff;border-radius:6px;padding:2px 10px;margin-bottom:10px}
+  .card p{color:#9aa4b8;font-size:14px;margin-bottom:16px}
+  .card .path{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:13px;color:#5c6778}
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;
+    border-radius:8px;padding:8px 18px;font-size:13px;font-weight:600;text-decoration:none;
+    transition:transform .1s ease;
+  }
+  .btn-open{background:#5b8cff;color:#fff}
+  .btn-open:hover{transform:translateY(-1px)}
+  .btn-del{background:#2a1f1f;color:#e85a5a;border:1px solid #3d2a2a}
+  .btn-del:hover{background:#3d2a2a}
+  .note{font-size:13px;color:#5c6778;border-top:1px solid #1a202e;padding-top:24px;margin-top:24px}
+</style>
+</head>
+<body>
+<h1>SDM <span>Palettes</span></h1>
+<p>Eleven design variants. Open each to preview — when you decide which one to keep, apply it to the main site and delete the palettes directory.</p>
+
+<div class="grid">
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · blue accents</div>
+      <h2>01 — Deep Space</h2>
+      <p>Тёмная тема с сине-фиолетовыми акцентами. Ближе всего к JetBrains-стилю.</p>
+      <div class="path">palettes/01-dark/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="01-dark/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Light · frost</div>
+      <h2>02 — Frost</h2>
+      <p>Светлая минималистичная тема. Хорошо читается, подходит для документации.</p>
+      <div class="path">palettes/02-frost/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="02-frost/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · gradients &amp; glow</div>
+      <h2>03 — Aurora</h2>
+      <p>Тёмная тема с градиентами и эффектом северного сияния на hero.</p>
+      <div class="path">palettes/03-aurora/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="03-aurora/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · teal gradient</div>
+      <h2>04 — GitVerse</h2>
+      <p>Тёмная тема в стиле GitVerse/GigaIDE: сине-бирюзовый градиент, технологичный вид.</p>
+      <div class="path">palettes/04-gitverse/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="04-gitverse/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Light · Sber style</div>
+      <h2>05 — Sber Dark</h2>
+      <p>Тёмная тема по мотивам developers.sber.ru: SB Sans, синий #2a72f8, оранжевый акцент.</p>
+      <div class="path">palettes/05-sber/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="05-sber/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · IDE / One Dark</div>
+      <h2>06 — Kotler IDE</h2>
+      <p>Тёмная IDE-тема по мотивам kotler-dev.github.io: моноширинный шрифт, панели как в редакторе, Kotlin-фиолетовый #766DB2.</p>
+      <div class="path">palettes/06-kotler/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="06-kotler/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · IDE rework</div>
+      <h2>07 — Kotler IDE (rework)</h2>
+      <p>Переработанный вариант 06: контент на сером фоне #2d2d2d, меню-табы как в редакторе, футер-статусбар.</p>
+      <div class="path">palettes/07-kotler/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="07-kotler/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · Mono</div>
+      <h2>08 — Mono</h2>
+      <p>Шрифт JetBrains Mono, каркас из 05 (Sber Dark), цвета One Dark из 06. Чистый, строгий.</p>
+      <div class="path">palettes/08-mono/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="08-mono/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · IntelliJ / Darcula</div>
+      <h2>09 — IntelliJ (Java)</h2>
+      <p>Цвета IDE JetBrains для Java-разработчиков: оранжевые ключевые слова, жёлтые методы, зелёные строки, синие числа.</p>
+      <div class="path">palettes/09-intellij/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="09-intellij/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · Kotlin brand</div>
+      <h2>10 — Kotlin (brand)</h2>
+      <p>Фирменные цвета Kotlin: фиолетовый #7F52FF, маджента #D211EC, красный #EF4857 из логотипа. Моноширинный шрифт, Darcula-фон.</p>
+      <div class="path">palettes/10-kotlin/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="10-kotlin/">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="body">
+      <div class="tag">Dark · Lime / Roadmap</div>
+      <h2>11 — Lime</h2>
+      <p>Свежий салатовый #c7f54a как на agenticroadmap.ru. Darcula-каркас из 09, тёмно-зелёный фон.</p>
+      <div class="path">palettes/11-lime/index.html</div>
+      <div class="actions" style="margin-top:14px">
+        <a class="btn btn-open" href="11-lime/">Open</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="note">
+  To apply the chosen palette: copy its CSS variables into the main site template. Then delete this <code>palettes/</code> directory.
+</div>
+</body>
+</html>

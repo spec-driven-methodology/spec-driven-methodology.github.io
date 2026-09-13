@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDM — Theme &amp; Brand</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<style>
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/files/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+  :root{
+    --bg:#2b2b2b;
+    --surface:#313335;
+    --surface-2:#3c3f41;
+    --border:#4a4a4a;
+    --text:#a9b7c6;
+    --text-dim:#9a9a9a;
+    --keyword:#cc7832;
+    --method:#ffc66d;
+    --string:#6a8759;
+    --number:#6897bb;
+    --field:#9876aa;
+    --comment:#808080;
+    --selection:#214283;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--method);text-decoration:none}
+  a:hover{color:#fff;text-decoration:underline}
+
+  .topbar{
+    display:flex;align-items:center;gap:8px;
+    padding:14px 40px;
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;background:rgba(43,43,43,.92);backdrop-filter:blur(12px);
+    z-index:5;
+  }
+  .logo{font-weight:700;font-size:16px;letter-spacing:.2px;color:var(--text)}
+  .logo{color:var(--text)}
+  .nav{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--text-dim)}
+  .nav a{color:var(--text-dim)}
+  .nav a:hover{color:var(--method)}
+  .nav .pill{
+    border:1px solid var(--border);border-radius:6px;padding:2px 12px;
+    font-size:12px;color:var(--method);
+  }
+
+  .hero{
+    padding:110px 40px 130px;
+    max-width:1100px;margin:0 auto;
+    text-align:center;
+    position:relative;
+  }
+  .hero::before{
+    content:"";position:absolute;
+    width:520px;height:520px;top:-180px;left:50%;transform:translateX(-50%);
+    background:radial-gradient(ellipse,rgba(204,115,50,.10) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--method);margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:60px;line-height:1.08;font-weight:700;letter-spacing:-.025em;
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:normal;color:transparent;
+    background:linear-gradient(90deg,var(--method) 0%,var(--keyword) 55%,var(--number) 115%);
+    -webkit-background-clip:text;background-clip:text;
+  }
+  .hero p{
+    font-size:16px;color:var(--text-dim);
+    max-width:680px;margin:0 auto 40px;
+  }
+  .cta{display:flex;gap:14px;justify-content:center}
+  .btn{
+    border-radius:8px;padding:12px 26px;font-size:14px;font-weight:600;
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .btn-primary{background:var(--keyword);color:#1d1d1d}
+  .btn-primary:hover{background:#d9864a;transform:translateY(-1px);box-shadow:0 8px 24px rgba(204,115,50,.3);text-decoration:none}
+  .btn-ghost{border:1px solid var(--border);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--method);color:var(--method);transform:translateY(-1px);text-decoration:none}
+
+  .bands{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;max-width:1200px;margin:-84px auto 40px;padding:0 40px}
+  .band{height:52px;border-radius:8px}
+  .b1{background:var(--bg);border:1px solid var(--border)}
+  .b2{background:var(--surface)}
+  .b3{background:var(--surface-2)}
+  .b4{background:var(--keyword)}
+  .b5{background:var(--method)}
+  .b6{background:var(--number)}
+  .b7{background:var(--string)}
+
+  .section{max-width:1100px;margin:0 auto;padding:72px 40px}
+  .section h2{font-size:32px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+  .section .sub{color:var(--text-dim);max-width:640px;margin-bottom:40px;font-size:14px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:10px;padding:26px;
+    transition:border-color .15s ease;
+  }
+  .card:hover{border-color:var(--keyword);}
+  .card .n{font-size:12px;color:var(--keyword);font-weight:600;margin-bottom:12px;display:block;letter-spacing:.04em}
+  .card h3{font-size:17px;font-weight:600;margin-bottom:8px}
+  .card p{color:var(--text-dim);font-size:13px}
+
+  .split{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+  .code{
+    background:var(--bg);border:1px solid var(--border);border-radius:10px;
+    padding:26px;font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    font-size:13px;line-height:1.7;color:var(--text);
+  }
+  .code .tok{color:var(--keyword);font-weight:600}
+  .code .tok2{color:var(--string)}
+  .code .num{color:var(--number)}
+  .code .comment{color:var(--comment)}
+  .checklist{list-style:none}
+  .checklist li{padding:16px 0;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start}
+  .checklist li:last-child{border-bottom:none}
+  .check{
+    flex:none;width:20px;height:20px;border-radius:6px;margin-top:2px;
+    background:rgba(106,135,89,.2);color:var(--string);
+    display:flex;align-items:center;justify-content:center;font-size:12px;
+  }
+  .checklist b{display:block;font-size:15px;margin-bottom:2px}
+  .checklist span{color:var(--text-dim);font-size:13px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{position:relative;padding-top:38px}
+  .step::before{
+    content:attr(data-n);
+    position:absolute;top:0;left:0;
+    font-size:13px;font-weight:600;color:#1d1d1d;
+    background:var(--keyword);border-radius:6px;padding:5px 10px;
+  }
+  .step h3{font-size:16px;font-weight:600;margin-bottom:6px}
+  .step p{color:var(--text-dim);font-size:13px}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:36px 40px;text-align:center;color:var(--text-dim);font-size:13px;
+  }
+
+  @media (max-width:900px){
+    .hero h1{font-size:40px}
+    .grid3,.split,.steps{grid-template-columns:1fr}
+    .bands{grid-template-columns:repeat(6,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});location.hash='';return false" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+      <defs><linearGradient id="sdmTb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cc7832"/><stop offset="1" stop-color="#ffc66d"/></linearGradient></defs>
+      <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmTb)"/>
+      <circle cx="16" cy="16" r="8.5" fill="none" stroke="#2b2b2b" stroke-width="3"/>
+      <path d="M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z" fill="#2b2b2b"/>
+      <circle cx="7.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+      <circle cx="24.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+    </svg>
+    <span>SDM</span>
+  </a>
+  <nav class="nav">
+    <a href="#what">What</a>
+    <a href="#layers">Layers</a>
+    <a href="#flow">Flow</a>
+    <a href="#brand">Brand</a>
+    <a href="#inverted">Inverted</a>
+    <a href="#" class="pill">v2.0.0</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="kicker">Methodology · as specs</div>
+  <h1><em>Spec-Driven Methodology</em></h1>
+  <p>SDM treats methodology as specs: written once, verified by machine, with every derived output generated automatically.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="#layers">Explore the layers</a>
+    <a class="btn btn-ghost" href="#flow">How it works</a>
+  </div>
+</header>
+
+<div class="bands" aria-hidden="true">
+  <div class="band b1"></div><div class="band b2"></div><div class="band b3"></div>
+  <div class="band b4"></div><div class="band b5"></div><div class="band b6"></div>
+  <div class="band b7"></div><div class="band b2"></div><div class="band b3"></div>
+  <div class="band b1"></div><div class="band b5"></div><div class="band b4"></div>
+</div>
+
+<section class="section" id="what">
+  <h2>What is SDM?</h2>
+  <p class="sub">A single, machine-verifiable chain of methodological artifacts — independent of who performs the steps: a human or an agent.</p>
+  <div class="grid3">
+    <div class="card"><span class="n">ONTOLOGY</span><h3>One graph</h3><p>Nodes of any kind — skills, topics, concepts, talks — and their relationships in a single graph.</p></div>
+    <div class="card"><span class="n">PROFILE</span><h3>Selection &amp; threshold</h3><p>What is selected from the ontology and to what threshold. The profile defines the target.</p></div>
+    <div class="card"><span class="n">COVERAGE</span><h3>Fixed gap definition</h3><p>What is missing, computed by a fixed measure. Identical across all implementations.</p></div>
+  </div>
+</section>
+
+<section class="section" id="layers">
+  <div class="split">
+    <div class="code">
+      <span class="comment"># spec.yaml — written once</span><br>
+      <span class="tok">ontology</span>: <span class="tok2">./ontology</span><br>
+      <span class="tok">profile</span>:  <span class="tok2">junior-backend</span><br>
+      <span class="tok">coverage</span>: <span class="tok2">fixed-measure</span><br>
+      <br>
+      <span class="comment"># everything below is generated</span><br>
+      <span class="tok">export</span>:<br>
+      &nbsp;&nbsp;<span class="tok2">web</span>      <span class="comment"># player</span><br>
+      &nbsp;&nbsp;<span class="tok2">obsidian</span><br>
+      &nbsp;&nbsp;<span class="tok2">cli</span>
+    </div>
+    <ul class="checklist">
+      <li><span class="check">✓</span><div><b>Specification</b><span>Ontology + profile + gap definition. Changes rarely.</span></div></li>
+      <li><span class="check">✓</span><div><b>Computation</b><span>Coverage by a fixed measure. Iterates.</span></div></li>
+      <li><span class="check">✓</span><div><b>Presentation</b><span>Export anywhere: MCP, Obsidian, web, CLI, documents. Fully open.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <h2>Lifecycle</h2>
+  <p class="sub">Artifacts, not commands — the same chain, whoever runs it.</p>
+  <div class="steps">
+    <div class="step" data-n="01"><h3>Ontology</h3><p>A graph of nodes and relationships, any kinds.</p></div>
+    <div class="step" data-n="02"><h3>Profile</h3><p>Selection from the ontology with a threshold.</p></div>
+    <div class="step" data-n="03"><h3>Coverage</h3><p>Gap nodes by a fixed definition.</p></div>
+    <div class="step" data-n="04"><h3>Export</h3><p>The result goes to MCP, Obsidian, web, CLI.</p></div>
+  </div>
+</section>
+
+<section class="section" id="brand">
+  <h2>Agent Orb · Wordmark</h2>
+  <p class="sub">The SDM brand mark — an AI agent (orb) guiding the competency graph, adapted to the SDM theme palette.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div class="card" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;padding:36px 26px">
+      <span class="n" style="align-self:flex-start">AGENT ORB</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="104" height="104">
+        <defs>
+          <linearGradient id="sdmG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#cc7832"/>
+            <stop offset="1" stop-color="#ffc66d"/>
+          </linearGradient>
+        </defs>
+        <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmG)"/>
+        <circle cx="16" cy="16" r="8.5" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+        <path d="M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z" fill="#2b2b2b"/>
+        <circle cx="7.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+        <circle cx="24.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+      </svg>
+      <h3 style="font-size:15px;font-weight:600;margin:0">Agent Orb</h3>
+      <p style="color:var(--text-dim);font-size:13px;margin:0">Orb = agent, spark ✦ = AI, nodes = skills. «Agent guides the graph.»</p>
+    </div>
+
+    <div class="card" style="display:flex;flex-direction:column;gap:20px;padding:36px 26px">
+      <span class="n">WORDMARK</span>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="lockup" style="display:flex;align-items:center;gap:16px;background:#1e1e1e;border:1px solid var(--border);border-radius:10px;padding:20px 24px">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="44" height="44">
+            <defs>
+              <linearGradient id="sdmG2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#cc7832"/>
+                <stop offset="1" stop-color="#ffc66d"/>
+              </linearGradient>
+            </defs>
+            <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmG2)"/>
+            <circle cx="16" cy="16" r="8.5" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round"/>
+            <path d="M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z" fill="#1e1e1e"/>
+            <circle cx="7.5" cy="23.5" r="1.8" fill="#1e1e1e"/>
+            <circle cx="24.5" cy="23.5" r="1.8" fill="#1e1e1e"/>
+          </svg>
+          <div>
+            <div style="font-size:28px;font-weight:700;letter-spacing:-.02em;color:#a9b7c6">SDM</div>
+            <div style="font-size:12px;color:#9a9a9a;letter-spacing:.02em">Spec-Driven Methodology</div>
+          </div>
+        </div>
+      </div>
+      <p style="color:var(--text-dim);font-size:13px;margin:0">Dark lockup (<code>#1e1e1e</code>). Gradient: <code>#cc7832</code> → <code>#ffc66d</code>.</p>
+    </div>
+  </div>
+
+  <div class="code" style="margin-top:18px;font-size:12px;line-height:1.6">
+    <span class="comment">&lt;!-- Agent Orb SVG --&gt;</span><br>
+    &lt;svg xmlns=<span class="tok2">"http://www.w3.org/2000/svg"</span> viewBox=<span class="tok2">"0 0 32 32"</span>&gt;<br>
+    &nbsp;&nbsp;&lt;defs&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;linearGradient id=<span class="tok2">"sdmG"</span> x1=<span class="tok2">"0"</span> y1=<span class="tok2">"0"</span> x2=<span class="tok2">"1"</span> y2=<span class="tok2">"1"</span>&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;stop offset=<span class="tok2">"0"</span> stop-color=<span class="tok2">"#cc7832"</span>/&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;stop offset=<span class="tok2">"1"</span> stop-color=<span class="tok2">"#ffc66d"</span>/&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/linearGradient&gt;<br>
+    &nbsp;&nbsp;&lt;/defs&gt;<br>
+    &nbsp;&nbsp;&lt;rect x=<span class="tok2">"1.5"</span> y=<span class="tok2">"1.5"</span> width=<span class="tok2">"29"</span> height=<span class="tok2">"29"</span> rx=<span class="tok2">"8"</span> fill=<span class="tok2">"url(#sdmG)"</span>/&gt;<br>
+    &nbsp;&nbsp;&lt;circle cx=<span class="tok2">"16"</span> cy=<span class="tok2">"16"</span> r=<span class="tok2">"8.5"</span> fill=<span class="tok2">"none"</span> stroke=<span class="tok2">"#2b2b2b"</span> stroke-width=<span class="tok2">"3"</span>/&gt;<br>
+    &nbsp;&nbsp;&lt;path d=<span class="tok2">"M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z"</span> fill=<span class="tok2">"#2b2b2b"</span>/&gt;<br>
+    &nbsp;&nbsp;&lt;circle cx=<span class="tok2">"7.5"</span> cy=<span class="tok2">"23.5"</span> r=<span class="tok2">"1.8"</span> fill=<span class="tok2">"#2b2b2b"</span>/&gt;<br>
+    &nbsp;&nbsp;&lt;circle cx=<span class="tok2">"24.5"</span> cy=<span class="tok2">"23.5"</span> r=<span class="tok2">"1.8"</span> fill=<span class="tok2">"#2b2b2b"</span>/&gt;<br>
+    &lt;/svg&gt;
+  </div>
+
+  <h2 style="font-size:22px;margin-top:44px;margin-bottom:10px">Варианты Agent Orb</h2>
+  <p class="sub">Дополнительные версии: основной цвет темы — на самом орбе, альтернативная палитра.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div class="card" id="inverted" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;padding:36px 26px">
+      <span class="n" style="align-self:flex-start">INVERTED</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="104" height="104">
+        <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="#2b2b2b" stroke="var(--border)" stroke-width="1"/>
+        <defs>
+          <linearGradient id="sdmGi" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#cc7832"/>
+            <stop offset="1" stop-color="#ffc66d"/>
+          </linearGradient>
+        </defs>
+        <circle cx="16" cy="16" r="8.5" fill="none" stroke="url(#sdmGi)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z" fill="url(#sdmGi)"/>
+        <circle cx="7.5" cy="23.5" r="1.8" fill="url(#sdmGi)"/>
+        <circle cx="24.5" cy="23.5" r="1.8" fill="url(#sdmGi)"/>
+      </svg>
+      <h3 style="font-size:15px;font-weight:600;margin:0">Inverted</h3>
+      <p style="color:var(--text-dim);font-size:13px;margin:0">Фон — <code>#2b2b2b</code> (bg), орб/искра/узлы — градиент <code>#cc7832</code> → <code>#ffc66d</code>. Основной цвет темы — на самом агенте.</p>
+    </div>
+
+    <div class="card" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px;padding:36px 26px">
+      <span class="n" style="align-self:flex-start">ALT · GREEN / BLUE</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="104" height="104">
+        <defs>
+          <linearGradient id="sdmGa" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#6a8759"/>
+            <stop offset="1" stop-color="#6897bb"/>
+          </linearGradient>
+        </defs>
+        <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmGa)"/>
+        <circle cx="16" cy="16" r="8.5" fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linecap="round"/>
+        <path d="M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z" fill="#2b2b2b"/>
+        <circle cx="7.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+        <circle cx="24.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+      </svg>
+      <h3 style="font-size:15px;font-weight:600;margin:0">Alt Palette</h3>
+      <p style="color:var(--text-dim);font-size:13px;margin:0">Градиент <code>#6a8759</code> (string green) → <code>#6897bb</code> (number blue). Орб/искра/узлы — <code>#2b2b2b</code>.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  SDM — Spec-Driven Methodology · spec-driven-methodology.github.io
+</footer>
+
+</body>
+</html>
