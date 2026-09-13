@@ -5,6 +5,9 @@ Organization site for the SDM methodology (Spec-Driven Methodology). GitHub Page
 ## Structure
 
 - `index.html` — main page (SDM theme: IntelliJ/Darcula palette, Agent Orb brand)
+- `ru/index.html` — Russian landing page
+- `examples/` — live example (Java Developer → Senior): ontology → profile → coverage → export
+- `ru/examples/` — Russian version of the live example
 - `sdm-theme/` — the SDM theme as a standalone copy
 - `archive/` — previous experiments (palettes, icons, examples, old Jekyll sources)
 
