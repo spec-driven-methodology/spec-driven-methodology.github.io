@@ -204,7 +204,7 @@
 <body>
 
 <div class="topbar">
-  <a href="/ru/" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});location.hash='';return false" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
+  <a href="../ru/" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'});location.hash='';return false" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
       <defs><linearGradient id="sdmTb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cc7832"/><stop offset="1" stop-color="#ffc66d"/></linearGradient></defs>
       <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmTb)"/>
@@ -225,12 +225,12 @@
     <a href="#examples">Примеры</a>
     <a href="#repos">Репозитории</a>
     <select class="lang-select" id="lang-select" aria-label="Language">
-      <option value="/">English</option>
-      <option value="/ru/" selected>Русский</option>
-      <option value="/zh-cn/" disabled>中文 (简体)</option>
-      <option value="/hi/" disabled>हिन्दी</option>
-      <option value="/pt-br/" disabled>Português (BR)</option>
-      <option value="/ar/" disabled>العربية</option>
+      <option value="../">English</option>
+      <option value="../ru/" selected>Русский</option>
+      <option value="../zh-cn/" disabled>中文 (简体)</option>
+      <option value="../hi/" disabled>हिन्दी</option>
+      <option value="../pt-br/" disabled>Português (BR)</option>
+      <option value="../ar/" disabled>العربية</option>
     </select>
     <a href="#" class="pill">v2.0.0</a>
   </nav>
@@ -407,32 +407,27 @@
 <!-- EXAMPLES -->
 <section class="section" id="examples">
   <div class="section-kicker">В действии</div>
-  <h2>Реальные артефакты из реального профиля</h2>
-  <p class="sub">Полный профиль Java Developer: навыки, вопросы, термины, покрытие и экспорт — всё из эталонной реализации SDM.</p>
-  <div class="grid2">
+  <h2>Живые примеры для разных областей</h2>
+  <p class="sub">SDM не ограничен профилями разработчиков. Та же цепочка спецификаций работает для учебных программ, конференций и любых методических артефактов. Каждый пример показывает полный цикл: Онтология → Профиль → Покрытие → Экспорт.</p>
+  <div class="grid3">
     <div class="card">
-      <span class="n">ONTOLOGY</span>
-      <h3>6 навыков</h3>
-      <p>Core Java, Spring, Databases, Testing, Architecture, DevOps — с описаниями и связями.</p>
+      <span class="n">СЕРТИФИКАЦИЯ</span>
+      <h3>Java Developer → Senior</h3>
+      <p>Полный профиль компетенций: 8 навыков, 32 вопроса, машинная проверка покрытия и сгенерированный экспорт. Включает Spring AI и LangChain4j — навыки для эпохи AI.</p>
+      <div style="margin-top:16px"><a class="btn btn-ghost" href="../ru/examples/java-developer-senior.html" style="display:inline-block;padding:6px 16px;font-size:12px">Смотреть →</a></div>
     </div>
     <div class="card">
-      <span class="n">QUESTIONS</span>
-      <h3>26 вопросов, 3 типа</h3>
-      <p>Single choice, multi choice, open с рубрикой — привязаны к навыкам, с уровнями сложности.</p>
+      <span class="n">УЧЕБНАЯ ПРОГРАММА</span>
+      <h3>Курс по AI</h3>
+      <p>Онтология с 4 видами узлов — темы, навыки, концепции и инструменты. Профиль задаёт требования по темам, покрытие показывает, каких материалов не хватает.</p>
+      <div style="margin-top:16px"><a class="btn btn-ghost" href="../ru/examples/ai-course.html" style="display:inline-block;padding:6px 16px;font-size:12px">Смотреть →</a></div>
     </div>
     <div class="card">
-      <span class="n">COVERAGE</span>
-      <h3>Вычисленные пробелы</h3>
-      <p>4 навыка OK, 2 навыка thin — видно сразу. Без гаданий и экспертных совещаний.</p>
+      <span class="n">ПРОГРАММА КОНФЕРЕНЦИИ</span>
+      <h3>Tech Conference Program</h3>
+      <p>Доклады как узлы графа, привязанные к навыкам и спикерам. Профиль трека проверяет, по каким темам хватает докладов — никаких таблиц вручную.</p>
+      <div style="margin-top:16px"><a class="btn btn-ghost" href="../ru/examples/tech-conference.html" style="display:inline-block;padding:6px 16px;font-size:12px">Смотреть →</a></div>
     </div>
-    <div class="card">
-      <span class="n">EXPORT</span>
-      <h3>Тест + учебные материалы</h3>
-      <p>С одного скелета: тестовый пакет и инструкция под разные поверхности. Один источник, много выходов.</p>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:24px">
-    <a class="btn btn-ghost" href="/ru/examples/">Смотреть полный пример →</a>
   </div>
 </section>
 

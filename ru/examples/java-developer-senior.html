@@ -53,6 +53,14 @@
   }
   .lang-select:hover{border-color:var(--method)}
   .lang-select option{background:var(--surface);color:var(--text)}
+  .nav-select{
+    background:var(--surface-2);color:var(--text);
+    border:1px solid var(--border);border-radius:6px;
+    padding:4px 8px;font-size:12px;font-family:inherit;
+    cursor:pointer;outline:none;
+  }
+  .nav-select:hover{border-color:var(--method)}
+  .nav-select option{background:var(--surface);color:var(--text)}
 
   main{max-width:980px;margin:0 auto;padding:0 40px 80px}
 
@@ -169,7 +177,7 @@
 <body>
 
 <div class="topbar">
-  <a href="/ru/" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
+  <a href="../../ru/" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
       <defs><linearGradient id="sdmTb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cc7832"/><stop offset="1" stop-color="#ffc66d"/></linearGradient></defs>
       <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmTb)"/>
@@ -185,10 +193,15 @@
     <a href="#profile">Профиль</a>
     <a href="#coverage">Покрытие</a>
     <a href="#export">Экспорт</a>
-    <a href="/ru/">← Лендинг</a>
+    <a href="../../ru/">← Лендинг</a>
+    <select class="nav-select" id="example-select" aria-label="Примеры">
+      <option value="../../ru/examples/java-developer-senior.html" selected>Java Developer → Senior</option>
+      <option value="../../ru/examples/ai-course.html">Курс по AI</option>
+      <option value="../../ru/examples/tech-conference.html">Программа конференции</option>
+    </select>
     <select class="lang-select" id="lang-select" aria-label="Language">
-      <option value="/examples/">English</option>
-      <option value="/ru/examples/" selected>Русский</option>
+      <option value="../../examples/">English</option>
+      <option value="../../ru/examples/java-developer-senior.html" selected>Русский</option>
     </select>
     <a href="#" class="pill">v2.0.0</a>
   </nav>
@@ -212,7 +225,7 @@
   </div>
 
   <section id="ontology">
-    <h2><span class="n">01</span> Онтология <span class="count">— 11 навыков в графе, 6 в фокусе</span></h2>
+    <h2><span class="n">01</span> Онтология <span class="count">— 13 навыков в графе, 8 в фокусе</span></h2>
     <p class="sub">Узлы любых видов в едином графе. Каждый навык — YAML-файл: <span class="code-inline">id</span>, <span class="code-inline">name</span>, <span class="code-inline">description</span> и опциональные связи с другими узлами.</p>
 
     <div class="grid3">
@@ -227,9 +240,9 @@
         <p>IoC/DI, Spring Boot, MVC, REST, безопасность, транзакции, JDBC/JPA, тестирование.</p>
       </div>
       <div class="card">
-        <span class="path">ontology/skills/architecture.yaml</span>
-        <h3>Architecture</h3>
-        <p>Микросервисы, DDD, Clean/Hexagonal, CQRS, event-driven, observability, resilience.</p>
+        <span class="path">ontology/skills/spring-ai.yaml</span>
+        <h3>Spring AI</h3>
+        <p>ChatClient, модели, advisors, tool calling, embeddings, vector stores, structured output.</p>
       </div>
     </div>
 
@@ -246,6 +259,8 @@
       <span class="tag"><span class="dot"></span>databases</span>
       <span class="tag"><span class="dot"></span>testing</span>
       <span class="tag"><span class="dot"></span>devops</span>
+      <span class="tag"><span class="dot"></span>architecture</span>
+      <span class="tag"><span class="dot"></span>langchain4j</span>
       <span class="tag"><span class="dot"></span>+5 ещё в графе</span>
     </div>
   </section>
@@ -257,12 +272,14 @@
     <div class="table-wrap">
       <table>
         <tr><th>Навык</th><th>Depth</th><th>Weight</th></tr>
-        <tr><td><b>core-java</b></td><td class="depth">0.9</td><td class="weight">0.3</td></tr>
-        <tr><td><b>spring-framework</b></td><td class="depth">0.9</td><td class="weight">0.3</td></tr>
+        <tr><td><b>core-java</b></td><td class="depth">0.9</td><td class="weight">0.25</td></tr>
+        <tr><td><b>spring-framework</b></td><td class="depth">0.9</td><td class="weight">0.25</td></tr>
+        <tr><td><b>spring-ai</b></td><td class="depth">0.7</td><td class="weight">0.1</td></tr>
+        <tr><td><b>langchain4j</b></td><td class="depth">0.6</td><td class="weight">0.1</td></tr>
         <tr><td><b>databases</b></td><td class="depth">0.9</td><td class="weight">0.1</td></tr>
         <tr><td><b>testing</b></td><td class="depth">0.9</td><td class="weight">0.1</td></tr>
-        <tr><td><b>architecture</b></td><td class="depth">0.9</td><td class="weight">0.1</td></tr>
-        <tr><td><b>devops</b></td><td class="depth">0.9</td><td class="weight">0.1</td></tr>
+        <tr><td><b>architecture</b></td><td class="depth">0.9</td><td class="weight">0.05</td></tr>
+        <tr><td><b>devops</b></td><td class="depth">0.9</td><td class="weight">0.05</td></tr>
       </table>
     </div>
 
@@ -270,21 +287,24 @@
       <span class="c"># certifications/levels/senior.yaml</span><br>
       <span class="k">level</span>: <span class="s">senior</span> &nbsp;<span class="k">threshold</span>: <span class="n">0.7</span><br>
       <span class="k">requirements</span>:<br>
-      &nbsp;&nbsp;- <span class="k">skill</span>: <span class="s">core-java</span> &nbsp;<span class="k">depth</span>: <span class="n">0.9</span> &nbsp;<span class="k">weight</span>: <span class="n">0.3</span><br>
-      &nbsp;&nbsp;- <span class="k">skill</span>: <span class="s">spring-framework</span> &nbsp;<span class="k">depth</span>: <span class="n">0.9</span> &nbsp;<span class="k">weight</span>: <span class="n">0.3</span><br>
-      &nbsp;&nbsp;- <span class="c">… ещё 4 …</span>
+      &nbsp;&nbsp;- <span class="k">skill</span>: <span class="s">core-java</span> &nbsp;<span class="k">depth</span>: <span class="n">0.9</span> &nbsp;<span class="k">weight</span>: <span class="n">0.25</span><br>
+      &nbsp;&nbsp;- <span class="k">skill</span>: <span class="s">spring-framework</span> &nbsp;<span class="k">depth</span>: <span class="n">0.9</span> &nbsp;<span class="k">weight</span>: <span class="n">0.25</span><br>
+      &nbsp;&nbsp;- <span class="k">skill</span>: <span class="s">spring-ai</span> &nbsp;<span class="k">depth</span>: <span class="n">0.7</span> &nbsp;<span class="k">weight</span>: <span class="n">0.1</span><br>
+      &nbsp;&nbsp;- <span class="c">… ещё 5 …</span>
     </div>
   </section>
 
   <section id="coverage">
     <h2><span class="n">03</span> Покрытие <span class="count">— проверяется машиной, gap фиксирован</span></h2>
-    <p class="sub">Множество gap-узлов вычисляется по фиксированному определению — одинаково у любых реализаций. Здесь: 26 вопросов в библиотеке, сверено с требуемой глубиной по каждому навыку.</p>
+    <p class="sub">Множество gap-узлов вычисляется по фиксированному определению — одинаково у любых реализаций. Здесь: 32 вопроса в библиотеке, сверено с требуемой глубиной по каждому навыку.</p>
 
     <div class="table-wrap">
       <table>
         <tr><th>Навык</th><th>Вопросы</th><th>Depth</th><th>Статус</th></tr>
         <tr><td><b>core-java</b></td><td>3</td><td>0.9</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div></td><td class="cov-status ok">ok</td></tr>
         <tr><td><b>spring-framework</b></td><td>5</td><td>0.9</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div></td><td class="cov-status ok">ok</td></tr>
+        <tr><td><b>spring-ai</b></td><td>4</td><td>0.7</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div></td><td class="cov-status ok">ok</td></tr>
+        <tr><td><b>langchain4j</b></td><td>4</td><td class="depth">0.60 → нужно 0.6</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div></td><td class="cov-status ok">ok</td></tr>
         <tr><td><b>databases</b></td><td>4</td><td>0.9</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div></td><td class="cov-status ok">ok</td></tr>
         <tr><td><b>testing</b></td><td>5</td><td>0.9</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill ok" style="width:100%"></div></div></td><td class="cov-status ok">ok</td></tr>
         <tr><td><b>architecture</b></td><td>5</td><td class="depth">0.63 → нужно 0.9</td><td class="bar-cell"><div class="cov-bar-bg"><div class="cov-bar-fill thin" style="width:70%"></div></div></td><td class="cov-status thin">thin</td></tr>
@@ -306,16 +326,16 @@
       <span class="p">{</span><br>
       &nbsp;&nbsp;<span class="k">schemaVersion</span>: <span class="s">"sdm.export.test/v1"</span>,<br>
       &nbsp;&nbsp;<span class="k">profile</span>: <span class="s">"java-developer"</span>, <span class="k">level</span>: <span class="s">"senior"</span>, <span class="k">threshold</span>: <span class="n">0.7</span>,<br>
-      &nbsp;&nbsp;<span class="k">requirements</span>: <span class="p">[</span> <span class="c">/* 6 навыков · depth · weight */</span> <span class="p">]</span>,<br>
-      &nbsp;&nbsp;<span class="k">questions</span>: <span class="p">[</span> <span class="c">/* 26 вопросов · 3 типа */</span> <span class="p">]</span><br>
+      &nbsp;&nbsp;<span class="k">requirements</span>: <span class="p">[</span> <span class="c">/* 8 навыков · depth · weight */</span> <span class="p">]</span>,<br>
+      &nbsp;&nbsp;<span class="k">questions</span>: <span class="p">[</span> <span class="c">/* 32 вопроса · 3 типа */</span> <span class="p">]</span><br>
       <span class="p">}</span>
     </div>
 
     <div class="meta-line">
-      <span class="tag"><span class="dot"></span>26 вопросов</span>
-      <span class="tag"><span class="dot"></span>6 навыков</span>
+      <span class="tag"><span class="dot"></span>32 вопроса</span>
+      <span class="tag"><span class="dot"></span>8 навыков</span>
       <span class="tag"><span class="dot"></span>порог 70%</span>
-      <span class="tag"><span class="dot"></span>9 терминов глоссария</span>
+      <span class="tag"><span class="dot"></span>12 терминов глоссария</span>
     </div>
 
     <div class="callout">
@@ -325,15 +345,19 @@
 </main>
 
 <footer>
-  <a href="/ru/">SDM — Spec-Driven Methodology</a> · живой пример из эталонного репозитория · <a href="https://github.com/spec-driven-methodology/sdm">github.com/spec-driven-methodology/sdm</a>
+  <a href="../../ru/">SDM — Spec-Driven Methodology</a> · живой пример из эталонного репозитория · <a href="https://github.com/spec-driven-methodology/sdm">github.com/spec-driven-methodology/sdm</a>
 </footer>
 
 </body>
 </html>
 
 <script>
-var select = document.getElementById('lang-select');
-select.addEventListener('change', function(){
-  window.location.href = select.value;
+var exampleSelect = document.getElementById('example-select');
+exampleSelect.addEventListener('change', function(){
+  window.location.href = exampleSelect.value;
+});
+var langSelect = document.getElementById('lang-select');
+langSelect.addEventListener('change', function(){
+  window.location.href = langSelect.value;
 });
 </script>
