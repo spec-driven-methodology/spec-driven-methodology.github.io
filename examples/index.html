@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live examples — Spec-Driven Methodology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2b2b2b;--surface:#313335;--surface-2:#3c3f41;
+  --border:#4a4a4a;--text:#a9b7c6;--text-dim:#9a9a9a;
+  --orange:#cc7832;--yellow:#ffc66d;--number:#6897bb;
+  --field:#9876aa;--string:#6a8759;--comment:#808080;
+  --kind-topic:#6a8759;--kind-skill:#ffc66d;--kind-concept:#9876aa;--kind-product:#6897bb;--kind-talk:#6a8759;--kind-person:#9876aa;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:"JetBrains Mono",monospace;font-size:14px;line-height:1.6;min-height:100vh}
+a{color:var(--orange);text-decoration:none}
+a:hover{color:var(--yellow)}
+.topbar{display:flex;align-items:center;gap:16px;padding:12px 24px;background:var(--surface);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;gap:16px;margin-left:auto}
+.lang-select,.nav-select{background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:4px 8px;font:inherit;font-size:12px;cursor:pointer}
+.pill{font-size:11px;padding:2px 8px;border-radius:5px;background:var(--surface-2);color:var(--text-dim);border:1px solid var(--border)}
+main{max-width:720px;margin:0 auto;padding:48px 24px}
+h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+h1 em{color:var(--orange);font-style:normal}
+.sub{color:var(--text-dim);margin-bottom:32px;font-size:13px}
+.examples{display:flex;flex-direction:column;gap:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 24px;transition:border-color .15s}
+.card:hover{border-color:var(--orange)}
+.card h3{font-size:16px;font-weight:600;margin-bottom:4px}
+.card h3 a{color:var(--yellow)}
+.card .desc{color:var(--text-dim);font-size:12px;margin-top:4px}
+.tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.tags span{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--surface-2);color:var(--text-dim)}
+footer{text-align:center;padding:24px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border);margin-top:48px}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="../" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22">
+      <defs><linearGradient id="sdmTb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cc7832"/><stop offset="1" stop-color="#ffc66d"/></linearGradient></defs>
+      <rect x="1.5" y="1.5" width="29" height="29" rx="8" fill="url(#sdmTb)"/>
+      <circle cx="16" cy="16" r="8.5" fill="none" stroke="#2b2b2b" stroke-width="3"/>
+      <path d="M16 8.8 17 11 19.2 12 17 13 16 15.2 15 13 12.8 12 15 11Z" fill="#2b2b2b"/>
+      <circle cx="7.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+      <circle cx="24.5" cy="23.5" r="1.8" fill="#2b2b2b"/>
+    </svg>
+    <span>SDM</span>
+  </a>
+  <nav class="nav">
+    <select class="nav-select" id="example-select" aria-label="Example">
+      <option value="../examples/" selected>-- choose example --</option>
+      <option value="../examples/java-developer-senior.html">Java Developer → Senior</option>
+      <option value="../examples/ai-course.html">AI Course Program</option>
+      <option value="../examples/tech-conference.html">Tech Conference Program</option>
+    </select>
+    <a href="../">← Landing</a>
+    <select class="lang-select" id="lang-select" aria-label="Language">
+      <option value="../examples/" selected>English</option>
+      <option value="../ru/examples/">Русский</option>
+    </select>
+    <a href="#" class="pill" id="version-pill">v2.0.0</a>
+  </nav>
+</div>
+
+<main>
+  <h1>Live <em>Examples</em></h1>
+  <p class="sub">Full lifecycle walkthroughs: ontology → profile → coverage → export. Each example uses the same SDM methodology with different node kinds.</p>
+
+  <div class="examples">
+    <div class="card">
+      <h3><a href="java-developer-senior.html">Java Developer → Senior</a></h3>
+      <p class="desc">Competency assessment for a Java engineer promotion. Pure skill ontology: 12 skills in a certification profile with coverage gaps.</p>
+      <div class="tags"><span>skill</span><span>profile</span><span>certification</span><span>coverage</span></div>
+    </div>
+
+    <div class="card">
+      <h3><a href="ai-course.html">AI Course Program</a></h3>
+      <p class="desc">Curriculum designer builds an AI specialization. The ontology mixes topics, skills, concepts, and tools — all in one graph. The course program is a profile with coverage checks.</p>
+      <div class="tags"><span>topic</span><span>skill</span><span>concept</span><span>product</span></div>
+    </div>
+
+    <div class="card">
+      <h3><a href="tech-conference.html">Tech Conference Program</a></h3>
+      <p class="desc">A conference program committee plans tracks from talk submissions. Ontology nodes are talks, skills, topics, and people. Coverage shows which tracks have enough talks.</p>
+      <div class="tags"><span>talk</span><span>skill</span><span>topic</span><span>person</span></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a href="https://github.com/spec-driven-methodology">spec-driven-methodology</a> · <a href="../">Landing</a>
+</footer>
+
+<script>
+var es = document.getElementById('example-select');
+es.addEventListener('change', function(){ if(this.value) location.href = this.value; });
+var ls = document.getElementById('lang-select');
+ls.addEventListener('change', function(){ if(this.value) location.href = this.value; });
+fetch('https://api.github.com/repos/spec-driven-methodology/sdm/releases/latest')
+  .then(function(r){ return r.json(); })
+  .then(function(d){ if(d.tag_name) document.getElementById('version-pill').textContent = d.tag_name; })
+  .catch(function(){});
+</script>
+</body>
+</html>
