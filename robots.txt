@@ -1,0 +1,9 @@
+# Allow all robots
+User-agent: *
+Allow: /
+
+# Exclude backup/temp files
+Disallow: *.bak
+
+# Sitemap
+Sitemap: https://spec-driven-methodology.github.io/sitemap.xml

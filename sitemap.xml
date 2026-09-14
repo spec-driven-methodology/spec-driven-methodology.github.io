@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://spec-driven-methodology.github.io/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spec-driven-methodology.github.io/"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://spec-driven-methodology.github.io/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/examples/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/ru/examples/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/examples/java-developer-senior.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/java-developer-senior.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/java-developer-senior.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/ru/examples/java-developer-senior.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/java-developer-senior.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/java-developer-senior.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/examples/ai-course.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/ai-course.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/ai-course.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/ru/examples/ai-course.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/ai-course.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/ai-course.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/examples/tech-conference.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/tech-conference.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/tech-conference.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/ru/examples/tech-conference.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://spec-driven-methodology.github.io/examples/tech-conference.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://spec-driven-methodology.github.io/ru/examples/tech-conference.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spec-driven-methodology.github.io/sdm-theme/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
