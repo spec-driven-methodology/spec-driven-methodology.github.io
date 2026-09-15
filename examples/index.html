@@ -67,7 +67,7 @@ footer{text-align:center;padding:24px;color:var(--text-dim);font-size:12px;borde
       <option value="../examples/" selected>English</option>
       <option value="../ru/examples/">Русский</option>
     </select>
-    <a href="#" class="pill" id="version-pill">v2.0.0</a>
+    <a href="#" class="pill" id="version-pill">v—</a>
   </nav>
 </div>
 
@@ -105,10 +105,7 @@ var es = document.getElementById('example-select');
 es.addEventListener('change', function(){ if(this.value) location.href = this.value; });
 var ls = document.getElementById('lang-select');
 ls.addEventListener('change', function(){ if(this.value) location.href = this.value; });
-fetch('https://api.github.com/repos/spec-driven-methodology/sdm/releases/latest')
-  .then(function(r){ return r.json(); })
-  .then(function(d){ if(d.tag_name) document.getElementById('version-pill').textContent = d.tag_name; })
-  .catch(function(){});
+<script src="../version.js"></script>
 </script>
 </body>
 </html>

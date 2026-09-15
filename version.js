@@ -1,6 +1,15 @@
 (function(){
+  var FALLBACK_TAG = 'v2.1.1';
+  var FALLBACK_URL = 'https://github.com/spec-driven-methodology/sdm/releases/tag/v2.1.1';
+
   var pill = document.getElementById('version-pill');
   if (!pill) return;
+
+  /* Set the fallback immediately before the async API request.
+     Individual HTML pages need only <a class="pill" id="version-pill"></a> —
+     the text is set here, same for every language version. */
+  pill.textContent = FALLBACK_TAG;
+  pill.href = FALLBACK_URL;
 
   var api  = 'https://api.github.com/repos/spec-driven-methodology/sdm/releases/latest';
   var key  = 'sdm-version-cache';
